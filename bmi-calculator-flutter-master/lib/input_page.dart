@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
 const double bottomContainerHeight = 80.0;
 const Color reusableCardColor = Color(0XFF1D1E33);
@@ -26,28 +28,13 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableCard(colour: reusableCardColor,
-                  cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(FontAwesomeIcons.mars,
-                        size: 80.0,
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Text('MALE',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Color(0xFF8D8E98),
-                        )
-                      ),
-
-                    ],
-                  ),
+                  cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
                 ),
               ),
               Expanded(
-                  child: ReusableCard(colour: reusableCardColor,),
+                  child: ReusableCard(colour: reusableCardColor,
+                    cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                  ),
               ),
             ],
           ),
@@ -89,21 +76,5 @@ class _InputPageState extends State<InputPage> {
 //   }
 }
 
-class ReusableCard extends StatelessWidget {
-     final Color colour;
-     final Widget cardChild;
-    ReusableCard({ @required this.colour, this.cardChild
-    });
-    @override
 
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-    margin: EdgeInsets.all(15.0),
-    decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0)
-    ),
-              );
-  }
-}
+

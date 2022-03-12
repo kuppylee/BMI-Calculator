@@ -23,24 +23,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
-
-  void updateCardColor (Gender selectedGender){
-    // male gender was selected 
-    if(selectedGender == Gender.male  && maleCardColor == inactiveCardColor){
-        maleCardColor = activeCardColor;
-      }else{
-        maleCardColor = inactiveCardColor;
-      }
-     // Female gender was selected
-     if(selectedGender == Gender.female && femaleCardColor == inactiveCardColor){
-        femaleCardColor = activeCardColor;
-      }else{
-        femaleCardColor = inactiveCardColor;
-      }
-    }
+  Gender selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +39,10 @@ class _InputPageState extends State<InputPage> {
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
-                      updateCardColor(Gender.male);
+                      selectedGender = Gender.male;
                     });
                   },
-                  child: ReusableCard(colour: maleCardColor,
+                  child: ReusableCard(colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
                     cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
                   ),
                 ),
@@ -68,10 +51,10 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: (){
                       setState(() {
-                        updateCardColor(Gender.female);
+                        selectedGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(colour: femaleCardColor,
+                    child: ReusableCard(colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
                       cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
                     ),
                   ),
@@ -104,16 +87,6 @@ class _InputPageState extends State<InputPage> {
       ),
     );
   }
-
-//   Widget boxContainerWidget(){
-//     return Container(
-//       margin: EdgeInsets.all(15.0),
-//       decoration: BoxDecoration(
-//           color: Color(0XFF1D1E33),
-//           borderRadius: BorderRadius.circular(10.0)
-//       ),
-//     );
-//   }
 }
 
 

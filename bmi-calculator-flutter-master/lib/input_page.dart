@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
+import 'constants.dart';
 
-const double bottomContainerHeight = 80.0;
-const Color activeCardColor = Color(0XFF1D1E33);
-const Color inactiveCardColor = Color(0XFF111328);
-const Color bottomContainerColor = Color(0xFFEB1555);
 
 enum Gender {
    male,
@@ -32,55 +29,68 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
+                child: ReusableCard(colour: selectedGender == Gender.male ? kActiveCardColor : kInactiveCardColor,
+                  cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
+                  onPressed: (){
+                  setState(() {
+                    selectedGender = Gender.male;
+                  });
                   },
-                  child: ReusableCard(colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
-                    cardChild: IconContent(icon: FontAwesomeIcons.mars,label: 'MALE',),
-                  ),
                 ),
               ),
               Expanded(
-                  child: GestureDetector(
-                    onTap: (){
+                  child: ReusableCard(colour: selectedGender == Gender.female ? kActiveCardColor : kInactiveCardColor,
+                    cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
+                    onPressed: (){
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
-                      cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'FEMALE',),
-                    ),
                   ),
               ),
             ],
           ),
           ),
           Expanded(
-            child: ReusableCard(colour: activeCardColor,),
+            child: ReusableCard(colour: kActiveCardColor,
+              cardChild: Column(
+                children: [
+                  Text('HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    children: [
+                      Text('180',
+                        style: kNumberLabelTextStyle,
+
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
             children: [
               Expanded(
-                child: ReusableCard(colour: activeCardColor,),
+                child: ReusableCard(colour: kActiveCardColor,),
               ),
               Expanded(
-                child: ReusableCard(colour: activeCardColor,),
+                child: ReusableCard(colour: kActiveCardColor,),
               ),
             ],
           ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
           ),
         ],

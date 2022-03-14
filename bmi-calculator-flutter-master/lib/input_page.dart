@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
 
   Gender selectedGender;
   int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +107,37 @@ class _InputPageState extends State<InputPage> {
             child: Row(
             children: [
               Expanded(
-                child: ReusableCard(colour: kActiveCardColor,),
+                child: ReusableCard(colour: kActiveCardColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('WEIGHT',
+                        style: kLabelTextStyle,
+                      ),
+                      Text(weight.toString(),
+                        style: kNumberLabelTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FloatingActionButton(onPressed: (){},
+                            backgroundColor: Color(0xFF4C4F5E),
+                            child: Icon(Icons.add,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(width: 10.0,),
+                          FloatingActionButton(onPressed: (){},
+                            backgroundColor: Color(0xFF4C4F5E),
+                            child: Icon(Icons.add,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Expanded(
                 child: ReusableCard(colour: kActiveCardColor,),
@@ -125,6 +156,20 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
+class RoundIconButton extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: (){},
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+
+    );
+  }
+}
+
 
 
 

@@ -1,7 +1,7 @@
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
-
+import 'calculate_button.dart';
 class Result extends StatelessWidget {
 
 
@@ -43,9 +43,13 @@ class Result extends StatelessWidget {
                   ),
                 ],
               ),
-
             ),
           ),
+          CalculateButton(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              calculatorText: 'RE-CALCULATE')
 
         ],
       ),

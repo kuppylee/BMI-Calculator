@@ -197,7 +197,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               );
             },
-            calculatorText: 'Calculate',
+            calculatorText: 'CALCULATE',
           ),
         ],
       ),

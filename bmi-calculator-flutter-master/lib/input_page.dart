@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'calculate_button.dart';
+import 'roundButton_page.dart';
 
 
 enum Gender {
@@ -186,22 +188,16 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
           ),
-          GestureDetector(
+          CalculateButton(
             onTap: (){
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context){
-                    return Result();
-                  },
-                  ),
+                MaterialPageRoute(builder: (context){
+                  return Result();
+                },
+                ),
               );
             },
-            child: Container(
-              child: Text('CALCULATE'),
-              color: kBottomContainerColor,
-              margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-              height: kBottomContainerHeight,
-              width: double.infinity,
-            ),
+            calculatorText: 'Calculate',
           ),
         ],
       ),
@@ -209,28 +205,9 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
 
-  RoundIconButton({@required this.icon, @required this.onPressed});
-  final IconData icon;
-  final Function onPressed;
 
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPressed,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      elevation: 0.0,
 
-    );
-  }
-}
 
 
 

@@ -18,7 +18,9 @@ class Result extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              child: Text('YOUR RESULT',
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: Text('Your Result',
                 style: kTitleTextStyle,
               ),
             ),
